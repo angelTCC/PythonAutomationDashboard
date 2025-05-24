@@ -15,6 +15,15 @@ As an aspiring Python developer with interests in agriculture, energy, and autom
 * Build a simple desktop GUI to visualize real-time data.
 * Schedule tasks to run automatically.
 
+https://polygon.io/pricing
+https://openweathermap.org/api
+https://official-joke-api.appspot.com/random_joke
+https://www.agriculture.com/markets/commodity-prices
+https://www.bloomberg.com/markets/commodities/futures/agriculture
+https://www.agroperu.pe/
+https://www.emmsa.com.pe/index.php/precios-diarios/
+https://www.meteored.pe/tiempo-en-America+Sur-Peru-Lima-1-6-139-5711.html
+https://www.preciocombustible.com/lima/
 
 ## Features
 
