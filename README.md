@@ -1,18 +1,8 @@
-Sure! Here’s an **extended README** tailored for your **Agro-Weather Real-Time Scraper & Viewer** project, plus a simple project structure and explanation for each part.
-
----
-
-# README.md
-
----
-
-# Agro-Weather Real-Time Scraper & Viewer
+# Real-Time Scraper & Viewer
 
 ## Project Overview
 
 This project is a **Python-based desktop application** designed to **automate the collection, storage, and visualization** of agricultural market prices and weather data relevant to farming and energy consumption. It scrapes live data from websites, fetches weather info through APIs, stores data locally in organized files, and displays real-time updates in a graphical user interface (GUI).
-
----
 
 ## Motivation
 
@@ -24,9 +14,7 @@ As an aspiring Python developer with interests in agriculture, energy, and autom
 * Automate file handling and data storage.
 * Build a simple desktop GUI to visualize real-time data.
 * Schedule tasks to run automatically.
-* Gain practical experience aligned with your learning course.
 
----
 
 ## Features
 
@@ -37,8 +25,6 @@ As an aspiring Python developer with interests in agriculture, energy, and autom
 * **Task Scheduling**: Schedule automated scraping and data fetching on intervals (e.g., hourly or daily).
 * **Manual Controls**: Buttons to trigger scraping, fetching, and report generation manually.
 * **Data Visualization**: Use matplotlib or Plotly to visualize price trends and weather changes.
-
----
 
 ## Technologies Used
 
@@ -53,7 +39,6 @@ As an aspiring Python developer with interests in agriculture, energy, and autom
 | schedule                | Task scheduling                          |
 | threading               | Keep GUI responsive during tasks         |
 
----
 
 ## Getting Started
 
@@ -65,44 +50,32 @@ As an aspiring Python developer with interests in agriculture, energy, and autom
 ### Installation
 
 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/agro-weather-scraper.git
-cd agro-weather-scraper
-```
-
+   ```bash
+   git clone https://github.com/yourusername/agro-weather-scraper.git
+   cd agro-weather-scraper
+   ```
 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
+   ```bash
+   pip install -r requirements.txt
+   ```
 3. Obtain an API key from [OpenWeatherMap](https://openweathermap.org/api) (free tier)
-
 4. Configure your API key in `config.py` (create this file with your key)
 
----
 
 ## How to Use
 
 1. Run the desktop app:
-
 ```bash
 python main.py
 ```
-
 2. Use buttons in the GUI to:
-
    * Scrape crop prices from predefined websites.
    * Fetch current weather and forecasts.
    * View data tables and charts.
    * Enable or disable auto-scheduling of data updates.
 
 3. Scraped and fetched data will be stored automatically in the `data/` folder, organized by date.
-
 4. Data visualization will update dynamically after each fetch/scrape.
-
----
 
 ## Project Structure
 
@@ -127,8 +100,6 @@ agro-weather-scraper/
 ├── main.py               # Entry point - runs the GUI app
 └── README.md             # This file
 ```
-
----
 
 ## Explanation of Each Part
 
@@ -168,7 +139,6 @@ agro-weather-scraper/
 * The app entry point.
 * Initializes and runs the GUI application.
 
----
 
 ## Future Enhancements
 
@@ -178,18 +148,11 @@ agro-weather-scraper/
 * Build a **React web dashboard** as a front-end alternative.
 * Containerize the app with **Docker** and orchestrate with **Kubernetes** for scalable deployment.
 
----
-
 ## Contributing
 
 Feel free to open issues or submit pull requests if you want to improve the project!
-
----
 
 ## License
 
 This project is open-source and free to use.
 
----
-
-If you want, I can also help generate starter code for each part or a simple MVP GUI template to get you started quickly!
