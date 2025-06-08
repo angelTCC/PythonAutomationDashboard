@@ -1,4 +1,4 @@
-# Real-Time Scraper & Viewer
+# Python automation Dashboard
 
 ## Project Overview
 
@@ -6,7 +6,36 @@ This project is a **Python-based desktop application** designed to **automate th
 
 ## Motivation
 
-As an aspiring Python developer with interests in agriculture, energy, and automation, this project helps to:
+This project helps to:
+```
+┌───────────────────────────── AgroOps Dashboard ─────────────────────────────┐
+│ Weather | Market | Inventory | Tasks | Alerts | Reports | Config           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🌦 Weather (Auto-Refresh in 30 mins)                                        │
+│ Region: [Lima ▾]     Date: [2025-06-08]       Forecast: ☀️ High: 28°C       │
+│ ┌────────────┬────────────┬────────────┬────────────┐                      │
+│ │ Today      │ +1 Day     │ +2 Days    │ +3 Days     │                      │
+│ │ 🌧 90% rain │ 🌤         │ 🌧 40%     │ ☀️ Clear     │                      │
+│ └────────────┴────────────┴────────────┴────────────┘                      │
+│ → [⚙ Configure Regions]   [🔄 Refresh Now]                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 📦 Inventory Snapshot       | 💰 Market Prices       | 🛠 Today's Tasks       │
+│ Crop      | Qty | Spoil %  | Crop   | S/ per kg | ▲▼ | Task        | Status│
+│ Potatoes  | 13T | 15% risk | Onion  | 2.10      | ▲  | Harvest Lima| ⏳     │
+│ Tomatoes  | 3T  | OK       | Potato | 1.70      | ▼  | Irrigate Jauja| ✅   │
+│ Corn      | 10T | 5% risk  | Corn   | 1.20      | →  | Spray Fungicide| 🕒 │
+│ → [📁 View Full Inventory]  → [📊 Price History]    → [📝 View All Tasks]     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ⚠️ Active Alerts                                                            │
+│ - Rain expected today in Cusco (check irrigation)                           │
+│ - Maize price up 5% in Huancayo (consider selling)                          │
+│ - Onion batch at risk of spoilage (4 days left)                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ [🧲 Run Scraping] [☁️ Fetch Weather] [📤 Generate Daily Report]              │
+│ [⚙ Set Auto-Scrape] [📆 Schedule Next Task]                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+```
 
 * Practice Python scripting for automation tasks.
 * Learn web scraping with BeautifulSoup/Scrapy.
@@ -89,25 +118,61 @@ python main.py
 ## Project Structure
 
 ```
-agro-weather-scraper/
+agroops_dashboard/
+├── main.py                            # App entry point (starts GUI)
+├── config/
+│   └── settings.py                    # API keys, URLs, config variables
+│   └── constants.py                   # Static labels, icons, paths
 ├── data/
+│   ├── weather/YYYY-MM-DD_weather.json
 │   ├── prices/YYYY-MM-DD_prices.csv
-│   └── weather/YYYY-MM-DD_weather.json
+│   ├── inventory/YYYY-MM-DD_inventory.csv
+│   ├── tasks/tasks.json
+│   └── reports/daily_2025-06-08.pdf
 ├── gui/
-│   ├── app.py            # Main GUI application
-│   ├── components.py     # GUI widgets and layout helpers
-│   └── plots.py          # Visualization functions (matplotlib/Plotly)
-├── scraper/
-│   ├── crop_prices.py    # Scrapes crop price data
-│   └── weather_api.py    # Fetches weather data from API
+│   ├── __init__.py
+│   ├── main_window.py                # Main layout with tabs
+│   ├── tabs/
+│   │   ├── weather_tab.py           # Weather forecast display
+│   │   ├── price_tab.py             # Market prices and charts
+│   │   ├── inventory_tab.py         # Stock levels and spoilage tracker
+│   │   ├── tasks_tab.py             # Daily tasks and field ops
+│   │   ├── alerts_tab.py            # Critical alerts panel
+│   │   └── reports_tab.py           # Generate/export reports
+│   ├── components/
+│   │   ├── table_widget.py          # Custom QTableWidget
+│   │   ├── chart_widget.py          # Plotly or matplotlib canvas
+│   │   ├── button_panel.py          # Common button bar
+│   │   └── icons.qrc                # Qt Resource file (icons/images)
+├── backend/
+│   ├── __init__.py
+│   ├── scraper/
+│   │   ├── crop_scraper.py          # Scrape data from EMMSA, AgroPeru, etc.
+│   │   ├── price_sources.py         # URLs, parsing rules
+│   ├── weather/
+│   │   ├── weather_api.py           # Fetch from OpenWeatherMap
+│   │   └── forecast_utils.py        # Preprocess + normalize forecast data
+│   ├── inventory/
+│   │   ├── inventory_manager.py     # Update and check stock levels
+│   │   └── spoilage_estimator.py    # Estimate risk from time/conditions
+│   ├── tasks/
+│   │   └── task_manager.py          # Create, update, complete tasks
+│   ├── alerts/
+│   │   └── alert_engine.py          # Generate alerts from data rules
+│   └── reports/
+│       └── report_generator.py      # Build daily PDF or CSV report
 ├── automation/
-│   ├── scheduler.py      # Task scheduling functions
-│   ├── file_handler.py   # File manipulation and organization
-│   └── email_report.py   # (Optional) Email report generation
-├── config.py             # Configuration (API keys, URLs)
-├── requirements.txt      # Python dependencies
-├── main.py               # Entry point - runs the GUI app
-└── README.md             # This file
+│   ├── scheduler.py                 # schedule & threading logic
+│   ├── auto_runner.py               # Trigger scraping/weather updates
+│   └── notifier.py                  # (Optional) Email/Telegram alerts
+├── assets/
+│   ├── icons/                       # PNG/SVG icons
+│   ├── images/                      # Static background/header images
+│   └── templates/                   # HTML or Jinja templates for reports
+├── requirements.txt
+├── README.md
+└── .env                            # (Optional) for storing API keys
+
 ```
 
 ## Explanation of Each Part
